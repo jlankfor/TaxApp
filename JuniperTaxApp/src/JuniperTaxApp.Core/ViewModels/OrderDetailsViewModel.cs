@@ -13,6 +13,14 @@ namespace JuniperTaxApp.Core.ViewModels
         readonly IMvxNavigationService _mvxNavigationService;
         readonly ITaxService _taxService;
 
+        public OrderDetailsViewModel(IMvxNavigationService mvxNavigationService, ITaxService taxService)
+        {
+            _mvxNavigationService = mvxNavigationService;
+            _taxService = taxService;
+
+            DestroyPlanetCommand = new MvxAsyncCommand(CalculateTax);
+        }
+
         public IMvxCommand DestroyPlanetCommand { get; private set; }
 
         public string Instructions => StringResources.GettingStarted;
@@ -39,13 +47,6 @@ namespace JuniperTaxApp.Core.ViewModels
         public double Amount { get; set; }
         public double ShippingAmount { get; set; }
 
-        public OrderDetailsViewModel(IMvxNavigationService mvxNavigationService, ITaxService taxService)
-        {
-            _mvxNavigationService = mvxNavigationService;
-            _taxService = taxService;
-
-            DestroyPlanetCommand = new MvxAsyncCommand(CalculateTax);
-        }
 
         private async Task CalculateTax()
         {

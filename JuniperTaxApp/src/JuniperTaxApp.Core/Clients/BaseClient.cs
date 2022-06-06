@@ -8,10 +8,9 @@ namespace JuniperTaxApp.Core.Clients
 {
     public class BaseClient
     {
-        protected readonly string _baseAddress;
-        const string JsonContentType = "application/json";
-
-        static readonly JsonSerializerSettings _jsonSerializerSettings = new JsonSerializerSettings
+        protected readonly string BaseAddress;
+        private const string JsonContentType = "application/json";
+        private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
         {
             DateTimeZoneHandling = DateTimeZoneHandling.Utc
         };
@@ -23,21 +22,27 @@ namespace JuniperTaxApp.Core.Clients
             Client = new HttpClient();
 
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(JsonContentType));
+            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "5da2f821eee4035db4771edab942a4cc");
 
-            _baseAddress = baseAddress;
+            BaseAddress = baseAddress;
         }
 
         protected async Task<TResponse> GetAsync<TResponse>(string url)
         {
-            var response = await Client.GetAsync($"{_baseAddress}{url}");
+            var response = await Client.GetAsync($"{BaseAddress}{url}");
 
             return await DeserializeContent<TResponse>(response);
         }
 
         protected async Task<TResponse> PostAsync<TResponse>(string url, object requestObject)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(requestObject, _jsonSerializerSettings));
-            var response = await Client.PostAsync($"{_baseAddress}{url}", content);
+            var content = new StringContent(JsonConvert.SerializeObject(requestObject, JsonSerializerSettings));
+            var response = await Client.PostAsync($"{BaseAddress}{url}", content);
+
+            // TODO: Handle error here
+            // response.IsSuccessStatusCode == returns T/F
+            // or
+            // response.EnsureSuccessStatusCode
 
             return await DeserializeContent<TResponse>(response);
         }
@@ -45,7 +50,7 @@ namespace JuniperTaxApp.Core.Clients
         protected async Task<T> DeserializeContent<T>(HttpResponseMessage responseMessage)
         {
             var json = await responseMessage.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<T>(json, _jsonSerializerSettings);
+            return JsonConvert.DeserializeObject<T>(json, JsonSerializerSettings);
         }
 
         protected string BuildRoute(params string[] routes)
