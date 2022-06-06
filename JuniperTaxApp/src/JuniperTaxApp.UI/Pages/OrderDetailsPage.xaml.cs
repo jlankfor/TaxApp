@@ -1,11 +1,13 @@
-using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+using JuniperTaxApp.Core.ViewModels;
+using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Forms.Views;
+using Xamarin.Forms.Xaml;
 
 namespace JuniperTaxApp.UI.Pages
 {
-    public partial class OrderDetailsPage : ContentPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [MvxContentPagePresentation(WrapInNavigationPage = true)]
+    public partial class OrderDetailsPage : MvxContentPage<OrderDetailsViewModel>
     {
         public OrderDetailsPage()
         {

@@ -1,5 +1,6 @@
 using System;
 using JuniperTaxApp.Core.Models;
+using JuniperTaxApp.Core.Resources;
 using MvvmCross.ViewModels;
 
 namespace JuniperTaxApp.Core.ViewModels
@@ -7,6 +8,7 @@ namespace JuniperTaxApp.Core.ViewModels
     public class CalculatedTaxViewModel : MvxViewModel<CalculatedTaxAndRatesModel>
     {
         public CalculatedTaxAndRatesModel CalculatedTaxAndRatesModel { get; set; }
+        public string PageTitle => StringResources.CalculatedTaxTitle;
         public string Location { get; set; }
         public string CombinedDistrictRate { get; set; }
         public string CombinedRate { get; set; }

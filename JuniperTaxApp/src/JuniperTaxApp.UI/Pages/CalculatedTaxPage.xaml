@@ -1,9 +1,17 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<ContentPage
+<views:MvxContentPage
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="JuniperTaxApp.UI.Pages.CalculatedTaxPage">
+    x:Class="JuniperTaxApp.UI.Pages.CalculatedTaxPage"
+    x:TypeArguments="viewModels:CalculatedTaxViewModel"
+    xmlns:viewModels="clr-namespace:JuniperTaxApp.Core.ViewModels;assembly=JuniperTaxApp.Core"
+    Title="{Binding PageTitle}">
     <ContentPage.Content>
-        
+        <ScrollView>
+            <StackLayout>
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
