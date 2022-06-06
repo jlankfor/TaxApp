@@ -47,9 +47,129 @@ namespace JuniperTaxApp.Core.Resources {
             }
         }
         
-        internal static string AddButton {
+        internal static string OrderDetailsTitle {
             get {
-                return ResourceManager.GetString("AddButton", resourceCulture);
+                return ResourceManager.GetString("OrderDetailsTitle", resourceCulture);
+            }
+        }
+        
+        internal static string CalculatedTaxTitle {
+            get {
+                return ResourceManager.GetString("CalculatedTaxTitle", resourceCulture);
+            }
+        }
+        
+        internal static string CalculateButton {
+            get {
+                return ResourceManager.GetString("CalculateButton", resourceCulture);
+            }
+        }
+        
+        internal static string GettingStarted {
+            get {
+                return ResourceManager.GetString("GettingStarted", resourceCulture);
+            }
+        }
+        
+        internal static string OriginZipCode {
+            get {
+                return ResourceManager.GetString("OriginZipCode", resourceCulture);
+            }
+        }
+        
+        internal static string DestinationZipCode {
+            get {
+                return ResourceManager.GetString("DestinationZipCode", resourceCulture);
+            }
+        }
+        
+        internal static string ZipCodeHint {
+            get {
+                return ResourceManager.GetString("ZipCodeHint", resourceCulture);
+            }
+        }
+        
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
+            }
+        }
+        
+        internal static string OriginState {
+            get {
+                return ResourceManager.GetString("OriginState", resourceCulture);
+            }
+        }
+        
+        internal static string DestinationState {
+            get {
+                return ResourceManager.GetString("DestinationState", resourceCulture);
+            }
+        }
+        
+        internal static string OrderAmount {
+            get {
+                return ResourceManager.GetString("OrderAmount", resourceCulture);
+            }
+        }
+        
+        internal static string OrderAmountHint {
+            get {
+                return ResourceManager.GetString("OrderAmountHint", resourceCulture);
+            }
+        }
+        
+        internal static string ShippingAmount {
+            get {
+                return ResourceManager.GetString("ShippingAmount", resourceCulture);
+            }
+        }
+        
+        internal static string ShippingAmountHint {
+            get {
+                return ResourceManager.GetString("ShippingAmountHint", resourceCulture);
+            }
+        }
+        
+        internal static string CityRate {
+            get {
+                return ResourceManager.GetString("CityRate", resourceCulture);
+            }
+        }
+        
+        internal static string CombinedDistrictRate {
+            get {
+                return ResourceManager.GetString("CombinedDistrictRate", resourceCulture);
+            }
+        }
+        
+        internal static string CombinedRate {
+            get {
+                return ResourceManager.GetString("CombinedRate", resourceCulture);
+            }
+        }
+        
+        internal static string CountryRate {
+            get {
+                return ResourceManager.GetString("CountryRate", resourceCulture);
+            }
+        }
+        
+        internal static string CountyRate {
+            get {
+                return ResourceManager.GetString("CountyRate", resourceCulture);
+            }
+        }
+        
+        internal static string StateRate {
+            get {
+                return ResourceManager.GetString("StateRate", resourceCulture);
+            }
+        }
+        
+        internal static string TaxesDue {
+            get {
+                return ResourceManager.GetString("TaxesDue", resourceCulture);
             }
         }
     }
