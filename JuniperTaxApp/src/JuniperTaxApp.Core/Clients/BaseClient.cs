@@ -2,6 +2,7 @@ using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using JuniperTaxApp.Core.Exceptions;
 using Newtonsoft.Json;
 
 namespace JuniperTaxApp.Core.Clients
@@ -31,7 +32,7 @@ namespace JuniperTaxApp.Core.Clients
         {
             var response = await Client.GetAsync($"{BaseAddress}{url}");
 
-            return await DeserializeContent<TResponse>(response);
+            return await HandleResponse<TResponse>(response);
         }
 
         protected async Task<TResponse> PostAsync<TResponse>(string url, object requestObject)
@@ -39,12 +40,7 @@ namespace JuniperTaxApp.Core.Clients
             var content = new StringContent(JsonConvert.SerializeObject(requestObject, JsonSerializerSettings));
             var response = await Client.PostAsync($"{BaseAddress}{url}", content);
 
-            // TODO: Handle error here
-            // response.IsSuccessStatusCode == returns T/F
-            // or
-            // response.EnsureSuccessStatusCode
-
-            return await DeserializeContent<TResponse>(response);
+            return await HandleResponse<TResponse>(response);
         }
 
         protected async Task<T> DeserializeContent<T>(HttpResponseMessage responseMessage)
@@ -56,6 +52,18 @@ namespace JuniperTaxApp.Core.Clients
         protected string BuildRoute(params string[] routes)
         {
             return string.Join("/", routes);
+        }
+
+        protected async Task<T> HandleResponse<T>(HttpResponseMessage responseMessage)
+        {
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return await DeserializeContent<T>(responseMessage);
+            }
+            else
+            {
+                throw new BasicAPIClientException(responseMessage);
+            }
         }
     }
 }

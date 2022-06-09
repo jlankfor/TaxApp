@@ -24,9 +24,9 @@ namespace JuniperTaxApp.Core.DTOs
         public string ToState { get; set; }
 
         [JsonProperty("amount")]
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
 
         [JsonProperty("shipping")]
-        public double Shipping { get; set; }
+        public decimal Shipping { get; set; }
     }
 }

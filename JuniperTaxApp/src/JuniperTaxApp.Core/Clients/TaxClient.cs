@@ -7,6 +7,7 @@ namespace JuniperTaxApp.Core.Clients
     public class TaxClient : BaseClient, ITaxClient
     {
         private static readonly string BaseUrl = "https://api.taxjar.com/v2/";
+
         readonly string TaxResource = "taxes";
         readonly string RatesResource = "rates";
 

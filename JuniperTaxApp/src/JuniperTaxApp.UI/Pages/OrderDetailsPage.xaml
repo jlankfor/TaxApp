@@ -19,6 +19,7 @@
                     <Label Text="{Binding OriginZipHeader}"
                            Margin="16,26,16,8"/>
                     <Entry Keyboard="Numeric"
+                           Text="{Binding OriginZIP, Mode=TwoWay}"
                            Placeholder="{Binding ZipHint}"
                            MaxLength="5"
                            Margin="16,0,16,24"/>
@@ -33,6 +34,7 @@
                     <Label Text="{Binding DestinationZipHeader}"
                            Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
+                           Text="{Binding DesinationZIP, Mode=TwoWay}"
                            Placeholder="{Binding ZipHint}"
                            MaxLength="5"
                            Margin="16,0,16,24"/>
@@ -47,12 +49,14 @@
                     <Label Text="{Binding OrderAmountHeader}"
                            Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
+                           Text="{Binding OrderAmount, Mode=TwoWay}"
                            Placeholder="{Binding OrderAmountHint}"
                            Margin="16,0,16,24"/>
 
                     <Label Text="{Binding ShippingAmountHeader}"
                            Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
+                           Text="{Binding ShippingAmount, Mode=TwoWay}"
                            Placeholder="{Binding ShippingAmountHint}"
                            Margin="16,0,16,24"/>
                 </StackLayout>

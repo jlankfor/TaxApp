@@ -26,6 +26,7 @@
     <None Remove="Ninject" />
     <None Remove="Autofac" />
     <None Remove="Enums\" />
+    <None Remove="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
@@ -36,6 +37,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Resources\" />
     <Folder Include="Enums\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Resources\StringResources.resx">
