@@ -5,33 +5,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="JuniperTaxApp.UI.Pages.OrderDetailsPage"
     x:TypeArguments="viewModels:OrderDetailsViewModel"
-    xmlns:viewModels="clr-namespace:JuniperTaxApp.Core.ViewModels;assembly=JuniperTaxApp.Core">
+    xmlns:viewModels="clr-namespace:JuniperTaxApp.Core.ViewModels;assembly=JuniperTaxApp.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Label Text="{Binding Instructions}"/>
+                <StackLayout>
+                    <Label Text="{Binding Instructions}"/>
 
-                <Label Text="{Binding OriginZipHeader}"/>
-                <Entry Keyboard="Numeric"
-                       Placeholder="{Binding ZipHint}"/>
+                    <Label Text="{Binding OriginZipHeader}"/>
+                    <Entry Keyboard="Numeric"
+                           Placeholder="{Binding ZipHint}"/>
 
-                <Label Text="{Binding OriginStateHeader}"/>
-                <Picker />
+                    <Label Text="{Binding OriginStateHeader}"/>
+                    <Picker />
 
-                <Label Text="{Binding DestinationZipHeader}"/>
-                <Entry Keyboard="Numeric"
-                       Placeholder="{Binding ZipHint}"/>
+                    <Label Text="{Binding DestinationZipHeader}"/>
+                    <Entry Keyboard="Numeric"
+                           Placeholder="{Binding ZipHint}"/>
 
-                <Label Text="{Binding DestinationStateHeader}"/>
-                <Picker />
+                    <Label Text="{Binding DestinationStateHeader}"/>
+                    <Picker />
 
-                <Label Text="{Binding OrderAmountHeader}"/>
-                <Entry Keyboard="Numeric"
-                       Placeholder="{Binding OrderAmountHint}"/>
+                    <Label Text="{Binding OrderAmountHeader}"/>
+                    <Entry Keyboard="Numeric"
+                           Placeholder="{Binding OrderAmountHint}"/>
 
-                <Label Text="{Binding ShippingAmountHeader}"/>
-                <Entry Keyboard="Numeric"
-                       Placeholder="{Binding ShippingAmountHint}"/>
+                    <Label Text="{Binding ShippingAmountHeader}"/>
+                    <Entry Keyboard="Numeric"
+                           Placeholder="{Binding ShippingAmountHint}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Button
+                        x:Name="CalculateButton"
+                        Margin="50, 20, 50, 20"
+                        BackgroundColor="CadetBlue"
+                        CornerRadius="5"
+                        TextColor="White"
+                        Command="{mvx:MvxBind CalculateTaxes}"/>
+                </StackLayout>
             </StackLayout>
              
         </ScrollView>

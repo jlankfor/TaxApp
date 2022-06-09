@@ -9,6 +9,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
     <PackageReference Include="MvvmCross" Version="8.0.2" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Ninject" Version="3.3.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,10 +21,12 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Interfaces\" />
     <None Remove="Resources\" />
+    <None Remove="TinyIoC" />
+    <None Remove="Ninject" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="Containers\" />
+    <Folder Include="Container\" />
     <Folder Include="Clients\" />
     <Folder Include="DTOs\" />
     <Folder Include="Models\" />

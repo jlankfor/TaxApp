@@ -1,6 +1,8 @@
 ﻿using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using JuniperTaxApp.Core.ViewModels.Home;
+using JuniperTaxApp.Core.Container;
+using System.Collections.Generic;
 
 namespace JuniperTaxApp.Core
 {
@@ -8,6 +10,13 @@ namespace JuniperTaxApp.Core
     {
         public override void Initialize()
         {
+            var containerModule = new List<ContainerModule>()
+            {
+                new ContainerModule()
+            };
+            DependencyContainer.Build(containerModule);
+
+            //var n = IMvxIoCProvider
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()

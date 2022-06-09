@@ -18,10 +18,10 @@ namespace JuniperTaxApp.Core.ViewModels
             _mvxNavigationService = mvxNavigationService;
             _taxService = taxService;
 
-            DestroyPlanetCommand = new MvxAsyncCommand(CalculateTax);
+            CalculateTaxes = new MvxAsyncCommand(CalculateTax);
         }
 
-        public IMvxCommand DestroyPlanetCommand { get; private set; }
+        public IMvxCommand CalculateTaxes { get; private set; }
 
         public string Instructions => StringResources.GettingStarted;
 

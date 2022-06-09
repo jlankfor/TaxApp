@@ -6,11 +6,30 @@
     x:Class="JuniperTaxApp.UI.Pages.CalculatedTaxPage"
     x:TypeArguments="viewModels:CalculatedTaxViewModel"
     xmlns:viewModels="clr-namespace:JuniperTaxApp.Core.ViewModels;assembly=JuniperTaxApp.Core"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     Title="{Binding PageTitle}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-
+                <StackLayout>
+                    <Label Text="{Binding Location}"/>
+                    <Label Text="{Binding CombinedDistrictRate}"/>
+                    <Label Text="{Binding CombinedRate}"/>
+                    <Label Text="{Binding CityRate}"/>
+                    <Label Text="{Binding CountyRate}"/>
+                    <Label Text="{Binding StateRate}"/>
+                    <Label Text="{Binding CountryRate}"/>
+                </StackLayout>
+                <StackLayout>
+                    <Label Text="{Binding TaxOwed}"/>
+                </StackLayout>
+                    <Button
+                        x:Name="Try New Order"
+                        Margin="50, 20, 50, 20"
+                        BackgroundColor="CadetBlue"
+                        CornerRadius="5"
+                        TextColor="White"
+                        Command="{mvx:MvxBind Something}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
