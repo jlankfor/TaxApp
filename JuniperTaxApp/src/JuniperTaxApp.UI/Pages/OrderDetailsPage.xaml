@@ -15,27 +15,33 @@
                     Margin="16,24,16,0"
                     FontSize="Header"/>
 
-                <StackLayout Margin="0,24">
+                <StackLayout Margin="0,24" BackgroundColor="White">
                     <Label Text="{Binding OriginZipHeader}"
                            Margin="16,26,16,8"/>
                     <Entry Keyboard="Numeric"
                            Placeholder="{Binding ZipHint}"
+                           MaxLength="5"
                            Margin="16,0,16,24"/>
 
                     <Label Text="{Binding OriginStateHeader}"
                            Margin="16,0,16,8"/>
                     <Picker ItemsSource="{Binding StatesList}"
+                            SelectedItem="{Binding OriginState, Mode=TwoWay}"
+                            Title="{Binding StateHint}"
                             Margin="16,0,16,24"/>
 
                     <Label Text="{Binding DestinationZipHeader}"
                            Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
                            Placeholder="{Binding ZipHint}"
+                           MaxLength="5"
                            Margin="16,0,16,24"/>
 
                     <Label Text="{Binding DestinationStateHeader}"
                            Margin="16,0,16,8"/>
                     <Picker ItemsSource="{Binding StatesList}"
+                            SelectedItem="{Binding DestinationState, Mode=TwoWay}"
+                            Title="{Binding StateHint}"
                             Margin="16,0,16,24"/>
 
                     <Label Text="{Binding OrderAmountHeader}"

@@ -83,6 +83,12 @@ namespace JuniperTaxApp.Core.Resources {
             }
         }
         
+        internal static string SelectStateHint {
+            get {
+                return ResourceManager.GetString("SelectStateHint", resourceCulture);
+            }
+        }
+        
         internal static string ZipCodeHint {
             get {
                 return ResourceManager.GetString("ZipCodeHint", resourceCulture);

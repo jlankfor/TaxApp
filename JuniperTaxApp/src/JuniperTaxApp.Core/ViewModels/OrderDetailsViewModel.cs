@@ -40,6 +40,7 @@ namespace JuniperTaxApp.Core.ViewModels
 
         public string OriginStateHeader => StringResources.OriginState;
         public string DestinationStateHeader => StringResources.DestinationState;
+        public string StateHint => StringResources.SelectStateHint;
 
         public string OrderAmountHeader => StringResources.OrderAmount;
         public string OrderAmountHint => StringResources.OrderAmountHint;

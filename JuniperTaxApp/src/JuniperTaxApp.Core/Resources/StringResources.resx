@@ -30,6 +30,9 @@
 	<data name="DestinationZipCode" xml:space="preserve">
 		<value>Destination ZIP Code</value>
   </data>
+	<data name="SelectStateHint" xml:space="preserve">
+		<value>Select a State</value>
+  </data>
 	<data name="ZipCodeHint" xml:space="preserve">
 		<value>Enter a 5 Digit Zip Code</value>
   </data>
