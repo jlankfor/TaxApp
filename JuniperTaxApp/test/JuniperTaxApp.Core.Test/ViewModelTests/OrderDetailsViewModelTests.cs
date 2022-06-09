@@ -1,5 +1,7 @@
+using System.Threading;
 using JuniperTaxApp.Core.DTOs;
 using JuniperTaxApp.Core.Interfaces;
+using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.ViewModels;
 using Moq;
 using MvvmCross.Navigation;
@@ -17,6 +19,10 @@ namespace JuniperTaxApp.Core.Test.ViewModelTests
         public void TestViewModel()
         {
             base.Setup();
+
+            // todo setup
+            _mvxNavigationService = new Mock<IMvxNavigationService>();
+            _taxService = new Mock<ITaxService>();
 
             var dto = new TaxCalculationBodyDTO { };
             _taxService.Setup(s => s.GetTaxAmount(dto)).ReturnsAsync(12.00);
@@ -40,7 +46,11 @@ namespace JuniperTaxApp.Core.Test.ViewModelTests
             Assert.AreEqual("Calculate Tax", viewModel.CaculateTaxButtonText);
 
             viewModel.CalculateTaxes.Execute(null);
-            // test navigation
+
+            _mvxNavigationService.Verify(s => s.Navigate<CalculatedTaxViewModel, CalculatedTaxAndRatesModel>
+                                  (It.IsAny<CalculatedTaxAndRatesModel>(),
+                                  null,
+                                   It.IsAny<CancellationToken>()));
         }
     }
 }

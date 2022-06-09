@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.ViewModels;
 using Moq;
@@ -53,7 +54,9 @@ namespace JuniperTaxApp.Core.Test.ViewModelTests
             Assert.AreEqual("Taxes Due: ${0}", viewModel.TaxOwed);
 
             viewModel.TryNewOrder.Execute(null);
-            // test navigation
+
+            _mvxNavigationService.Verify(s => s.Close<CalculatedTaxViewModel>
+                                  (null, null, It.IsAny<CancellationToken>()));
         }
     }
 }
