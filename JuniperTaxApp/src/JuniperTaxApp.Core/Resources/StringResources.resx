@@ -76,4 +76,7 @@
 	<data name="TaxesDue" xml:space="preserve">
 		<value>Taxes Due: ${0}</value>
   </data>
+	<data name="TryNewOrderButton" xml:space="preserve">
+		<value>Try New Order</value>
+  </data>
 </root>

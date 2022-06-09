@@ -172,5 +172,11 @@ namespace JuniperTaxApp.Core.Resources {
                 return ResourceManager.GetString("TaxesDue", resourceCulture);
             }
         }
+        
+        internal static string TryNewOrderButton {
+            get {
+                return ResourceManager.GetString("TryNewOrderButton", resourceCulture);
+            }
+        }
     }
 }

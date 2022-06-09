@@ -3,6 +3,7 @@ using MvvmCross.ViewModels;
 using JuniperTaxApp.Core.ViewModels.Home;
 using JuniperTaxApp.Core.Container;
 using System.Collections.Generic;
+using JuniperTaxApp.Core.ViewModels;
 
 namespace JuniperTaxApp.Core
 {
@@ -21,8 +22,12 @@ namespace JuniperTaxApp.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+            CreatableTypes()
+                .EndingWith("Client")
+                .AsInterfaces()
+                .RegisterAsLazySingleton();
 
-            RegisterAppStart<HomeViewModel>();
+            RegisterAppStart<OrderDetailsViewModel>();
         }
     }
 }

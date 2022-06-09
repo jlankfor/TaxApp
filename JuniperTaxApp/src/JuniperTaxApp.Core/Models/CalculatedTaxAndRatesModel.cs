@@ -1,4 +1,3 @@
-using System;
 using JuniperTaxApp.Core.Resources;
 
 namespace JuniperTaxApp.Core.Models
@@ -9,19 +8,19 @@ namespace JuniperTaxApp.Core.Models
 
         public TaxRateModel TaxRateModel { get; set; }
 
-        public static string CityRate { get; set; }
+        public string CityRate { get; set; }
 
-        public static string CombinedDistrictRate { get; set; }
+        public string CombinedDistrictRate { get; set; }
 
-        public static string CombinedRate { get; set; }
+        public string CombinedRate { get; set; }
 
-        public static string CountryRate { get; set; }
+        public string CountryRate { get; set; }
 
-        public static string CountyRate { get; set; }
+        public string CountyRate { get; set; }
 
-        public static string StateRate { get; set; }
+        public string StateRate { get; set; }
 
-        public static string TaxesDue { get; set; }
+        public string TaxesDue { get; set; }
 
         public CalculatedTaxAndRatesModel(double taxAmount, TaxRateModel taxRateModel)
         {

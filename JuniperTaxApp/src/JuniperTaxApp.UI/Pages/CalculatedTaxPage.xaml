@@ -10,26 +10,37 @@
     Title="{Binding PageTitle}">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <StackLayout>
-                    <Label Text="{Binding Location}"/>
-                    <Label Text="{Binding CombinedDistrictRate}"/>
-                    <Label Text="{Binding CombinedRate}"/>
-                    <Label Text="{Binding CityRate}"/>
-                    <Label Text="{Binding CountyRate}"/>
-                    <Label Text="{Binding StateRate}"/>
-                    <Label Text="{Binding CountryRate}"/>
+            <StackLayout BackgroundColor="WhiteSmoke">
+                <StackLayout Margin="16,24">
+                    <Label Text="{Binding Location}"
+                           Margin="16,24"/>
+                    <Label Text="{Binding CombinedDistrictRate}"
+                           Margin="16,0,16,8"/>
+                    <Label Text="{Binding CombinedRate}"
+                           Margin="16,0,16,8"/>
+                    <Label Text="{Binding CityRate}"
+                           Margin="16,0,16,8"/>
+                    <Label Text="{Binding CountyRate}"
+                           Margin="16,0,16,8"/>
+                    <Label Text="{Binding StateRate}"
+                           Margin="16,0,16,8"/>
+                    <Label Text="{Binding CountryRate}"
+                           Margin="16,0,16,8"/>
                 </StackLayout>
-                <StackLayout>
-                    <Label Text="{Binding TaxOwed}"/>
+                <StackLayout Margin="16,0,16,24">
+                    <Label Text="{Binding TaxOwed}"
+                           Margin="16"
+                           FontSize="Title"/>
                 </StackLayout>
-                    <Button
-                        x:Name="Try New Order"
-                        Margin="50, 20, 50, 20"
-                        BackgroundColor="CadetBlue"
-                        CornerRadius="5"
-                        TextColor="White"
-                        Command="{mvx:MvxBind Something}"/>
+                <Button
+                    x:Name="TryNewOrder"
+                    Margin="16, 24, 16, 40"
+                    BackgroundColor="DodgerBlue"
+                    CornerRadius="5"
+                    TextColor="White"
+                    Text="{Binding TryNewOrderButton}"
+                    FontSize="Header"
+                    Command="{mvx:MvxBind TryNewOrder}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

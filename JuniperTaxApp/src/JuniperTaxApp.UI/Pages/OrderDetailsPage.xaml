@@ -6,47 +6,60 @@
     x:Class="JuniperTaxApp.UI.Pages.OrderDetailsPage"
     x:TypeArguments="viewModels:OrderDetailsViewModel"
     xmlns:viewModels="clr-namespace:JuniperTaxApp.Core.ViewModels;assembly=JuniperTaxApp.Core"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms">
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    Title="{Binding OrderTitle}">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
-                <StackLayout>
-                    <Label Text="{Binding Instructions}"/>
+            <StackLayout BackgroundColor="WhiteSmoke" >
+                <Label Text="{Binding Instructions}"
+                    Margin="16,24,16,0"
+                    FontSize="Header"/>
 
-                    <Label Text="{Binding OriginZipHeader}"/>
+                <StackLayout Margin="0,24">
+                    <Label Text="{Binding OriginZipHeader}"
+                           Margin="16,26,16,8"/>
                     <Entry Keyboard="Numeric"
-                           Placeholder="{Binding ZipHint}"/>
+                           Placeholder="{Binding ZipHint}"
+                           Margin="16,0,16,24"/>
 
-                    <Label Text="{Binding OriginStateHeader}"/>
-                    <Picker />
+                    <Label Text="{Binding OriginStateHeader}"
+                           Margin="16,0,16,8"/>
+                    <Picker ItemsSource="{Binding StatesList}"
+                            Margin="16,0,16,24"/>
 
-                    <Label Text="{Binding DestinationZipHeader}"/>
+                    <Label Text="{Binding DestinationZipHeader}"
+                           Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
-                           Placeholder="{Binding ZipHint}"/>
+                           Placeholder="{Binding ZipHint}"
+                           Margin="16,0,16,24"/>
 
-                    <Label Text="{Binding DestinationStateHeader}"/>
-                    <Picker />
+                    <Label Text="{Binding DestinationStateHeader}"
+                           Margin="16,0,16,8"/>
+                    <Picker ItemsSource="{Binding StatesList}"
+                            Margin="16,0,16,24"/>
 
-                    <Label Text="{Binding OrderAmountHeader}"/>
+                    <Label Text="{Binding OrderAmountHeader}"
+                           Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
-                           Placeholder="{Binding OrderAmountHint}"/>
+                           Placeholder="{Binding OrderAmountHint}"
+                           Margin="16,0,16,24"/>
 
-                    <Label Text="{Binding ShippingAmountHeader}"/>
+                    <Label Text="{Binding ShippingAmountHeader}"
+                           Margin="16,0,16,8"/>
                     <Entry Keyboard="Numeric"
-                           Placeholder="{Binding ShippingAmountHint}"/>
+                           Placeholder="{Binding ShippingAmountHint}"
+                           Margin="16,0,16,24"/>
                 </StackLayout>
-                <StackLayout>
-                    <Button
-                        x:Name="CalculateButton"
-                        Margin="50, 20, 50, 20"
-                        BackgroundColor="CadetBlue"
-                        CornerRadius="5"
-                        TextColor="White"
-                        Command="{mvx:MvxBind CalculateTaxes}"/>
-                </StackLayout>
+                <Button
+                    x:Name="CalculateButton"
+                    Margin="16, 0, 16, 40"
+                    BackgroundColor="DodgerBlue"
+                    CornerRadius="5"
+                    TextColor="White"
+                    Text="{Binding CaculateTaxButtonText}"
+                    FontSize="Header"
+                    Command="{mvx:MvxBind CalculateTaxes}"/>
             </StackLayout>
-             
         </ScrollView>
-       
     </ContentPage.Content>
 </views:MvxContentPage>

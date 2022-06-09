@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using JuniperTaxApp.Core.DTOs;
+using JuniperTaxApp.Core.Enums;
 using JuniperTaxApp.Core.Interfaces;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.Resources;
@@ -19,10 +23,15 @@ namespace JuniperTaxApp.Core.ViewModels
             _taxService = taxService;
 
             CalculateTaxes = new MvxAsyncCommand(CalculateTax);
+
+            StatesList = Enum.GetNames(typeof(StateType)).ToList();
         }
 
         public IMvxCommand CalculateTaxes { get; private set; }
 
+        public List<string> StatesList { get; set; }
+
+        public string OrderTitle => StringResources.OrderDetailsTitle;
         public string Instructions => StringResources.GettingStarted;
 
         public string OriginZipHeader => StringResources.OriginZipCode;
@@ -37,6 +46,8 @@ namespace JuniperTaxApp.Core.ViewModels
 
         public string ShippingAmountHeader => StringResources.ShippingAmount;
         public string ShippingAmountHint => StringResources.ShippingAmountHint;
+
+        public string CaculateTaxButtonText => StringResources.CalculateButton;
 
         public string OriginZIP { get; set; }
         public string DesinationZIP { get; set; }

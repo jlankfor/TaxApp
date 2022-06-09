@@ -1,15 +1,21 @@
 using System;
+using System.Threading.Tasks;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.Resources;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
 namespace JuniperTaxApp.Core.ViewModels
 {
     public class CalculatedTaxViewModel : MvxViewModel<CalculatedTaxAndRatesModel>
     {
-        public CalculatedTaxViewModel()
+        readonly IMvxNavigationService _mvxNavigationService;
+
+        public CalculatedTaxViewModel(IMvxNavigationService mvxNavigationService)
         {
+            _mvxNavigationService = mvxNavigationService;
+
             SetupProperties();
         }
 
@@ -23,6 +29,7 @@ namespace JuniperTaxApp.Core.ViewModels
         public IMvxCommand TryNewOrder { get; private set; }
 
         public string PageTitle => StringResources.CalculatedTaxTitle;
+        public string TryNewOrderButton => StringResources.TryNewOrderButton;
         public string Location { get; set; }
         public string CombinedDistrictRate { get; set; }
         public string CombinedRate { get; set; }
@@ -34,6 +41,8 @@ namespace JuniperTaxApp.Core.ViewModels
 
         public void SetupProperties()
         {
+            TryNewOrder = new MvxAsyncCommand(SetupNewOrder);
+
             CombinedDistrictRate = string.Format(StringResources.CombinedDistrictRate, CalculatedTaxAndRatesModel.CombinedDistrictRate);
             CombinedRate = string.Format(StringResources.CombinedRate, CalculatedTaxAndRatesModel.CombinedRate);
             CityRate = string.Format(StringResources.CityRate, CalculatedTaxAndRatesModel.CityRate);
@@ -41,6 +50,11 @@ namespace JuniperTaxApp.Core.ViewModels
             StateRate = string.Format(StringResources.StateRate, CalculatedTaxAndRatesModel.StateRate);
             CountryRate = string.Format(StringResources.CountryRate, CalculatedTaxAndRatesModel.CountryRate);
             TaxOwed = string.Format(StringResources.TaxesDue, CalculatedTaxAndRatesModel.TaxesDue);
+        }
+
+        private async Task SetupNewOrder()
+        {
+            await _mvxNavigationService.Close(this);
         }
     }
 }
