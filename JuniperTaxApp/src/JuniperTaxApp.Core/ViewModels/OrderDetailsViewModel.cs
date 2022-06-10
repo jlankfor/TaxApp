@@ -8,7 +8,6 @@ using JuniperTaxApp.Core.Enums;
 using JuniperTaxApp.Core.Interfaces;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.Resources;
-using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -18,15 +17,12 @@ namespace JuniperTaxApp.Core.ViewModels
     {
         readonly IMvxNavigationService _mvxNavigationService;
         readonly ITaxService _taxService;
-        readonly IUserDialogs _userDialogs;
         private const int ZipLength = 5;
 
         public OrderDetailsViewModel(IMvxNavigationService mvxNavigationService, ITaxService taxService)
         {
             _mvxNavigationService = mvxNavigationService;
             _taxService = taxService;
-
-            //_userDialogs = Mvx.Resolve<IUserDialogs>();
 
             CalculateTaxes = new MvxAsyncCommand(CalculateTax);
 
@@ -141,7 +137,6 @@ namespace JuniperTaxApp.Core.ViewModels
                 }
             }
         }
-
         #endregion
 
         private async Task CalculateTax()
@@ -162,7 +157,7 @@ namespace JuniperTaxApp.Core.ViewModels
             }
             else
             {
-                //_userDialogs.Alert(StringResources.InvalidFormDetails, StringResources.InvalidFormHeader, StringResources.OKButton);
+                UserDialogs.Instance.Alert(StringResources.InvalidFormDetails, StringResources.InvalidFormHeader, StringResources.OKButton);
             }
         }
 
