@@ -12,6 +12,7 @@
     <PackageReference Include="MvvmCross.Tests" Version="8.0.2" />
     <PackageReference Include="NUnit" Version="3.13.2" />
     <PackageReference Include="NUnit3TestAdapter" Version="4.0.0" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.2.0.564" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
 
   <ItemGroup>
     <None Remove="ViewModelTests\" />
+    <None Remove="Acr.UserDialogs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModelTests\" />

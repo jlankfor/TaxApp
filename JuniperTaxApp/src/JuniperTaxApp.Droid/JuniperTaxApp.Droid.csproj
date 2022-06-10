@@ -111,6 +111,9 @@
     <PackageReference Include="Xamarin.Google.Android.Material">
       <Version>1.4.0.4</Version>
     </PackageReference>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.2.0.564</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\mipmap-anydpi-v26\ic_launcher.xml" />

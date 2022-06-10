@@ -2,11 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Acr.UserDialogs;
 using JuniperTaxApp.Core.DTOs;
 using JuniperTaxApp.Core.Enums;
 using JuniperTaxApp.Core.Interfaces;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.Resources;
+using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 
@@ -16,11 +18,15 @@ namespace JuniperTaxApp.Core.ViewModels
     {
         readonly IMvxNavigationService _mvxNavigationService;
         readonly ITaxService _taxService;
+        readonly IUserDialogs _userDialogs;
+        private const int ZipLength = 5;
 
         public OrderDetailsViewModel(IMvxNavigationService mvxNavigationService, ITaxService taxService)
         {
             _mvxNavigationService = mvxNavigationService;
             _taxService = taxService;
+
+            //_userDialogs = Mvx.Resolve<IUserDialogs>();
 
             CalculateTaxes = new MvxAsyncCommand(CalculateTax);
 
@@ -67,7 +73,7 @@ namespace JuniperTaxApp.Core.ViewModels
         }
 
         private string _destinationZip;
-        public string DesinationZIP
+        public string DestinationZIP
         {
             get => _destinationZip;
             set
@@ -140,14 +146,24 @@ namespace JuniperTaxApp.Core.ViewModels
 
         private async Task CalculateTax()
         {
-            var rateTask = _taxService.GetTaxRate(OriginZIP, CustomerType.BaseCustomer);
-            var taxAmountTask = _taxService.GetTaxAmount(CreateTaxAmountBody(), CustomerType.BaseCustomer);
+            var areInputFieldsValid = ValidateInputs();
 
-            await Task.WhenAll(rateTask, taxAmountTask);
+            if(areInputFieldsValid)
+            {
+                var rateTask = _taxService.GetTaxRate(OriginZIP, CustomerType.BaseCustomer);
+                var taxAmountTask = _taxService.GetTaxAmount(CreateTaxAmountBody(), CustomerType.BaseCustomer);
 
-            var taxesAndRatesModel = new CalculatedTaxAndRatesModel(taxAmountTask.Result, rateTask.Result);
+                await Task.WhenAll(rateTask, taxAmountTask);
 
-            await _mvxNavigationService.Navigate<CalculatedTaxViewModel, CalculatedTaxAndRatesModel>(taxesAndRatesModel);
+                var taxesAndRatesModel = new CalculatedTaxAndRatesModel(taxAmountTask.Result, rateTask.Result);
+                ClearFields();
+
+                await _mvxNavigationService.Navigate<CalculatedTaxViewModel, CalculatedTaxAndRatesModel>(taxesAndRatesModel);
+            }
+            else
+            {
+                //_userDialogs.Alert(StringResources.InvalidFormDetails, StringResources.InvalidFormHeader, StringResources.OKButton);
+            }
         }
 
         private TaxCalculationBodyDTO CreateTaxAmountBody()
@@ -159,10 +175,32 @@ namespace JuniperTaxApp.Core.ViewModels
                 FromState = OriginState,
                 ToCountry = "US",
                 ToState = DestinationState,
-                ToZip = DesinationZIP,
+                ToZip = DestinationZIP,
                 Amount = Convert.ToDecimal(OrderAmount),
                 Shipping = Convert.ToDecimal(ShippingAmount)
             };
+        }
+
+        private bool ValidateInputs()
+        {
+            var isValidOriginZip = int.TryParse(OriginZIP, out _) && OriginZIP.Length == ZipLength;
+            var isValidDestinationZip = int.TryParse(OriginZIP, out _) && DestinationZIP.Length == ZipLength;
+            var isValidOrderAmount = decimal.TryParse(OrderAmount, out _);
+            var isValidShippingAmount = decimal.TryParse(ShippingAmount, out _);
+
+            // alternitively could check index changed
+            var isValidOriginState = !string.IsNullOrWhiteSpace(OriginState);
+            var isValidDestinationState = !string.IsNullOrWhiteSpace(DestinationState);
+
+            return isValidOriginZip && isValidDestinationZip && isValidOrderAmount && isValidShippingAmount && isValidOriginState && isValidDestinationState;
+        }
+
+        private void ClearFields()
+        {
+            OriginZIP = string.Empty;
+            DestinationZIP = string.Empty;
+            OrderAmount = string.Empty;
+            ShippingAmount = string.Empty;
         }
     }
 }

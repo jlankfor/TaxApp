@@ -49,13 +49,13 @@
 		<value>Order Amount</value>
   </data>
 	<data name="OrderAmountHint" xml:space="preserve">
-		<value>Enter Order Amount</value>
+		<value>Enter Order Amount (ex: 65.15)</value>
   </data>
 	<data name="ShippingAmount" xml:space="preserve">
 		<value>Shipping Amount</value>
   </data>
 	<data name="ShippingAmountHint" xml:space="preserve">
-		<value>Enter Shipping Amount</value>
+		<value>Enter Shipping Amount (ex: 10.00)</value>
   </data>
 
 	<data name="CityRate" xml:space="preserve">
@@ -81,5 +81,14 @@
   </data>
 	<data name="TryNewOrderButton" xml:space="preserve">
 		<value>Try New Order</value>
+  </data>
+	<data name="InvalidFormHeader" xml:space="preserve">
+		<value>Invalid Order Inputs</value>
+  </data>
+	<data name="InvalidFormDetails" xml:space="preserve">
+		<value>Please ensure the State's have been selected and that the zip code and order and shipping amounts are valid</value>
+  </data>
+	<data name="OKButton" xml:space="preserve">
+		<value>OK</value>
   </data>
 </root>

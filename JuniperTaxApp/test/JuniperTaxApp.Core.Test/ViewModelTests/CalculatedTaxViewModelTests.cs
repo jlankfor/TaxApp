@@ -1,4 +1,3 @@
-using System;
 using System.Threading;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.ViewModels;
@@ -39,19 +38,19 @@ namespace JuniperTaxApp.Core.Test.ViewModelTests
             });
 
             var viewModel = new CalculatedTaxViewModel(_mvxNavigationService.Object);
-            viewModel.CalculatedTaxAndRatesModel = new Models.CalculatedTaxAndRatesModel(10.00, taxRateModel);
+            viewModel.CalculatedTaxAndRatesModel = new CalculatedTaxAndRatesModel(10.00, taxRateModel);
 
-
+            Assert.AreEqual("Denver, Denver, CO, 12345", viewModel.Location);
             Assert.AreEqual("Tax Amount and Rates", viewModel.PageTitle);
             Assert.AreEqual("Try New Order", viewModel.TryNewOrderButton);
             Assert.AreEqual("", viewModel.Location);
-            Assert.AreEqual("Combined District Rate: {0}", viewModel.CombinedDistrictRate);
-            Assert.AreEqual("Combined Rate: {0}", viewModel.CombinedRate);
-            Assert.AreEqual("City Rate: {0}", viewModel.CityRate);
-            Assert.AreEqual("County Rate: {0}", viewModel.CountyRate);
-            Assert.AreEqual("State Rate: {0}", viewModel.StateRate);
-            Assert.AreEqual("Country Rate: {0}", viewModel.CountryRate);
-            Assert.AreEqual("Taxes Due: ${0}", viewModel.TaxOwed);
+            Assert.AreEqual("Combined District Rate: 0", viewModel.CombinedDistrictRate);
+            Assert.AreEqual("Combined Rate: 0", viewModel.CombinedRate);
+            Assert.AreEqual("City Rate: 0", viewModel.CityRate);
+            Assert.AreEqual("County Rate: 0", viewModel.CountyRate);
+            Assert.AreEqual("State Rate: 0", viewModel.StateRate);
+            Assert.AreEqual("Country Rate: 0", viewModel.CountryRate);
+            Assert.AreEqual("Taxes Due: $10.00", viewModel.TaxOwed);
 
             viewModel.TryNewOrder.Execute(null);
 

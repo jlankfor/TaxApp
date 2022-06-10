@@ -184,5 +184,23 @@ namespace JuniperTaxApp.Core.Resources {
                 return ResourceManager.GetString("TryNewOrderButton", resourceCulture);
             }
         }
+        
+        internal static string InvalidFormHeader {
+            get {
+                return ResourceManager.GetString("InvalidFormHeader", resourceCulture);
+            }
+        }
+        
+        internal static string InvalidFormDetails {
+            get {
+                return ResourceManager.GetString("InvalidFormDetails", resourceCulture);
+            }
+        }
+        
+        internal static string OKButton {
+            get {
+                return ResourceManager.GetString("OKButton", resourceCulture);
+            }
+        }
     }
 }
