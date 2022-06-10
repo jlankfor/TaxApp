@@ -13,19 +13,17 @@ namespace JuniperTaxApp.Core.ViewModels
         public override void Prepare(CalculatedTaxAndRatesModel parameter)
         {
             CalculatedTaxAndRatesModel = parameter;
+            SetupProperties();
         }
 
         public override async Task Initialize()
         {
             await base.Initialize();
-
         }
 
         public CalculatedTaxViewModel(IMvxNavigationService mvxNavigationService)
         {
             _mvxNavigationService = mvxNavigationService;
-
-            SetupProperties();
         }
 
         public CalculatedTaxAndRatesModel CalculatedTaxAndRatesModel { get; set; }
@@ -47,13 +45,18 @@ namespace JuniperTaxApp.Core.ViewModels
         {
             TryNewOrder = new MvxAsyncCommand(SetupNewOrder);
 
-            CombinedDistrictRate = string.Format(StringResources.CombinedDistrictRate, CalculatedTaxAndRatesModel.CombinedDistrictRate);
-            CombinedRate = string.Format(StringResources.CombinedRate, CalculatedTaxAndRatesModel.CombinedRate);
-            CityRate = string.Format(StringResources.CityRate, CalculatedTaxAndRatesModel.CityRate);
-            CountyRate = string.Format(StringResources.CountyRate, CalculatedTaxAndRatesModel.CountyRate);
-            StateRate = string.Format(StringResources.StateRate, CalculatedTaxAndRatesModel.StateRate);
-            CountryRate = string.Format(StringResources.CountryRate, CalculatedTaxAndRatesModel.CountryRate);
-            TaxOwed = string.Format(StringResources.TaxesDue, CalculatedTaxAndRatesModel.TaxesDue);
+            Location = $"{CalculatedTaxAndRatesModel.TaxRateModel.City}, " +
+                $"{CalculatedTaxAndRatesModel.TaxRateModel.County}, " +
+                $"{CalculatedTaxAndRatesModel.TaxRateModel.State}, " +
+                $"{CalculatedTaxAndRatesModel.TaxRateModel.Zip}";
+
+            CombinedDistrictRate = CalculatedTaxAndRatesModel.CombinedDistrictRate;
+            CombinedRate = CalculatedTaxAndRatesModel.CombinedRate;
+            CityRate = CalculatedTaxAndRatesModel.CityRate;
+            CountyRate = CalculatedTaxAndRatesModel.CountyRate;
+            StateRate = CalculatedTaxAndRatesModel.StateRate;
+            CountryRate = CalculatedTaxAndRatesModel.CountryRate;
+            TaxOwed = CalculatedTaxAndRatesModel.TaxesDue;
         }
 
         private async Task SetupNewOrder()

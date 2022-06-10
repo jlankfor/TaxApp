@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using JuniperTaxApp.Core.DTOs;
 using JuniperTaxApp.Core.Enums;
@@ -14,7 +12,7 @@ using MvvmCross.Navigation;
 
 namespace JuniperTaxApp.Core.ViewModels
 {
-    public class OrderDetailsViewModel : BaseViewModel, INotifyPropertyChanged
+    public class OrderDetailsViewModel : BaseViewModel
     {
         readonly IMvxNavigationService _mvxNavigationService;
         readonly ITaxService _taxService;
@@ -139,14 +137,6 @@ namespace JuniperTaxApp.Core.ViewModels
         }
 
         #endregion
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            var handler = PropertyChanged;
-            handler.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
         private async Task CalculateTax()
         {
