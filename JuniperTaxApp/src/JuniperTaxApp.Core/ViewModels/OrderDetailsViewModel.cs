@@ -140,8 +140,8 @@ namespace JuniperTaxApp.Core.ViewModels
 
         private async Task CalculateTax()
         {
-            var rateTask = _taxService.GetTaxRate(OriginZIP);
-            var taxAmountTask = _taxService.GetTaxAmount(CreateTaxAmountBody());
+            var rateTask = _taxService.GetTaxRate(OriginZIP, CustomerType.BaseCustomer);
+            var taxAmountTask = _taxService.GetTaxAmount(CreateTaxAmountBody(), CustomerType.BaseCustomer);
 
             await Task.WhenAll(rateTask, taxAmountTask);
 
