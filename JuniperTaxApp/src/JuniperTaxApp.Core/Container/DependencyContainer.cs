@@ -25,5 +25,48 @@ namespace JuniperTaxApp.Core.Container
         {
             _kernal = kernal;
         }
+
+        public static T Get<T>(string name = null)
+        {
+            if(_kernal == null)
+            {
+                throw new NullReferenceException("IKernal container is null");
+            }
+
+            return _kernal.Get<T>(name);
+        }
+
+        public static bool TryGet<T>(out T parameter, string name = null)
+        {
+            parameter = default;
+
+            if (_kernal == null)
+            {
+                throw new NullReferenceException("IKernal container is null");
+            }
+
+            parameter = _kernal.Get<T>(name);
+            return true;
+        }
+
+        public static void Inject<T>(object obj)
+        {
+            if (_kernal == null)
+            {
+                throw new NullReferenceException("IKernal container is null");
+            }
+
+            _kernal.Inject(obj);
+        }
+
+        public static void BindInstance<T>(T instance)
+        {
+            if (_kernal == null)
+            {
+                throw new NullReferenceException("IKernal container is null");
+            }
+
+            _kernal.Bind<T>().ToConstant(instance);
+        }
     }
 }

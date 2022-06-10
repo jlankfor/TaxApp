@@ -21,7 +21,6 @@ namespace JuniperTaxApp.Core
             //};
             //DependencyContainer.Build(containerModule);
 
-            //var n = IMvxIoCProvider
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
@@ -30,10 +29,6 @@ namespace JuniperTaxApp.Core
                 .EndingWith("Client")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
-            //Mvx.IoCProvider.RegisterType<IUserDialogs, UserDialogs.Instance>();
-            //Mvx.IoCProvider.RegisterType<ITaxService, TaxService>();
-            Mvx.RegisterSingleton<IUserDialogs>(() => UserDialogs.Instance);
 
             RegisterAppStart<OrderDetailsViewModel>();
         }
