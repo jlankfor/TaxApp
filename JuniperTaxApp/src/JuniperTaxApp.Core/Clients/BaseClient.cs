@@ -1,4 +1,3 @@
-using System;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
@@ -38,6 +37,7 @@ namespace JuniperTaxApp.Core.Clients
         protected async Task<TResponse> PostAsync<TResponse>(string url, object requestObject)
         {
             var content = new StringContent(JsonConvert.SerializeObject(requestObject, JsonSerializerSettings));
+            content.Headers.ContentType = new MediaTypeHeaderValue(JsonContentType);
             var response = await Client.PostAsync($"{BaseAddress}{url}", content);
 
             return await HandleResponse<TResponse>(response);

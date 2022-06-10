@@ -1,27 +1,31 @@
-using System;
 using System.Threading.Tasks;
 using JuniperTaxApp.Core.Models;
 using JuniperTaxApp.Core.Resources;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
 
 namespace JuniperTaxApp.Core.ViewModels
 {
-    public class CalculatedTaxViewModel : MvxViewModel<CalculatedTaxAndRatesModel>
+    public class CalculatedTaxViewModel : BaseViewModel<CalculatedTaxAndRatesModel>
     {
         readonly IMvxNavigationService _mvxNavigationService;
+
+        public override void Prepare(CalculatedTaxAndRatesModel parameter)
+        {
+            CalculatedTaxAndRatesModel = parameter;
+        }
+
+        public override async Task Initialize()
+        {
+            await base.Initialize();
+
+        }
 
         public CalculatedTaxViewModel(IMvxNavigationService mvxNavigationService)
         {
             _mvxNavigationService = mvxNavigationService;
 
             SetupProperties();
-        }
-
-        public override void Prepare(CalculatedTaxAndRatesModel parameter)
-        {
-            CalculatedTaxAndRatesModel = parameter;
         }
 
         public CalculatedTaxAndRatesModel CalculatedTaxAndRatesModel { get; set; }
