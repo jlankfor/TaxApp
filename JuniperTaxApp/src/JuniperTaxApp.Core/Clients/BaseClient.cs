@@ -10,6 +10,9 @@ namespace JuniperTaxApp.Core.Clients
     {
         protected readonly string BaseAddress;
         private const string JsonContentType = "application/json";
+        private const string Scheme = "Bearer";
+        // would ideally use some encrytion service to store this and get from there
+        private const string Key = "5da2f821eee4035db4771edab942a4cc";
         private static readonly JsonSerializerSettings JsonSerializerSettings = new JsonSerializerSettings
         {
             DateTimeZoneHandling = DateTimeZoneHandling.Utc
@@ -22,7 +25,7 @@ namespace JuniperTaxApp.Core.Clients
             Client = new HttpClient();
 
             Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(JsonContentType));
-            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "5da2f821eee4035db4771edab942a4cc");
+            Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(Scheme, Key);
 
             BaseAddress = baseAddress;
         }

@@ -18,6 +18,8 @@ namespace JuniperTaxApp.Core.ViewModels
         readonly IMvxNavigationService _mvxNavigationService;
         readonly ITaxService _taxService;
         private const int ZipLength = 5;
+        // using US for country code only, could set up for EU,AU,CA etc
+        private const string Country = "US";
 
         public OrderDetailsViewModel(IMvxNavigationService mvxNavigationService, ITaxService taxService)
         {
@@ -165,10 +167,10 @@ namespace JuniperTaxApp.Core.ViewModels
         {
             return new TaxCalculationBodyDTO
             {
-                FromCountry = "US",
+                FromCountry = Country,
                 FromZip = OriginZIP,
                 FromState = OriginState,
-                ToCountry = "US",
+                ToCountry = Country,
                 ToState = DestinationState,
                 ToZip = DestinationZIP,
                 Amount = Convert.ToDecimal(OrderAmount),
