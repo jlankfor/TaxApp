@@ -22,8 +22,10 @@
   <ItemGroup>
     <None Remove="ViewModelTests\" />
     <None Remove="Acr.UserDialogs" />
+    <None Remove="ServiceTests\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ViewModelTests\" />
+    <Folder Include="ServiceTests\" />
   </ItemGroup>
 </Project>
