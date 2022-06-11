@@ -40,6 +40,8 @@ namespace JuniperTaxApp.Core.ViewModels
         public string StateRate { get; set; }
         public string CountryRate { get; set; }
         public string TaxOwed { get; set; }
+        public string OrderAmount { get; set; }
+        public string OrderAmountWithTax { get; set; }
 
         public void SetupProperties()
         {
@@ -56,7 +58,9 @@ namespace JuniperTaxApp.Core.ViewModels
             CountyRate = CalculatedTaxAndRatesModel.CountyRate;
             StateRate = CalculatedTaxAndRatesModel.StateRate;
             CountryRate = CalculatedTaxAndRatesModel.CountryRate;
+            OrderAmount = CalculatedTaxAndRatesModel.OrderTotalAmount;
             TaxOwed = CalculatedTaxAndRatesModel.TaxesDue;
+            OrderAmountWithTax = CalculatedTaxAndRatesModel.OrderTotalWithTax;
         }
 
         private async Task SetupNewOrder()

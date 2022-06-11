@@ -34,7 +34,7 @@ namespace JuniperTaxApp.Core.Test.ViewModelTests
             _userDialogs = new Mock<IUserDialogs>();
 
             var dto = new TaxCalculationBodyDTO { };
-            _taxService.Setup(s => s.GetTaxAmount(dto, CustomerType.BaseCustomer)).ReturnsAsync(12.00);
+            _taxService.Setup(s => s.GetTaxAmount(dto, CustomerType.BaseCustomer)).ReturnsAsync((12.00, 100.00));
             _taxService.Setup(s => s.GetTaxRate(It.IsAny<string>(), CustomerType.BaseCustomer)).ReturnsAsync(new TaxRateModel(BuildTaxRateDTO()));
 
             IDictionary<string, int> properties = new Dictionary<string, int>();

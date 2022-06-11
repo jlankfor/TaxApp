@@ -1,10 +1,13 @@
+using System;
 using JuniperTaxApp.Core.Resources;
 
 namespace JuniperTaxApp.Core.Models
 {
     public class CalculatedTaxAndRatesModel
     {
-        public double TaxAmount { get; set; }
+        public decimal TaxAmount { get; set; }
+
+        public decimal OrderTotal { get; set; }
 
         public TaxRateModel TaxRateModel { get; set; }
 
@@ -22,9 +25,14 @@ namespace JuniperTaxApp.Core.Models
 
         public string TaxesDue { get; set; }
 
-        public CalculatedTaxAndRatesModel(double taxAmount, TaxRateModel taxRateModel)
+        public string OrderTotalAmount { get; set; }
+
+        public string OrderTotalWithTax { get; set; }
+
+        public CalculatedTaxAndRatesModel(double taxAmount, double orderTotal, TaxRateModel taxRateModel)
         {
-            TaxAmount = taxAmount;
+            TaxAmount = Convert.ToDecimal(taxAmount);
+            OrderTotal = Convert.ToDecimal(orderTotal);
             TaxRateModel = taxRateModel;
 
             SetupProperties();
@@ -38,7 +46,9 @@ namespace JuniperTaxApp.Core.Models
             CountryRate = string.Format(StringResources.CountryRate, TaxRateModel.CountryRate);
             CountyRate = string.Format(StringResources.CountyRate, TaxRateModel.CountyRate);
             StateRate = string.Format(StringResources.StateRate, TaxRateModel.StateRate);
+            OrderTotalAmount = string.Format(StringResources.OrderTotal, OrderTotal);
             TaxesDue = string.Format(StringResources.TaxesDue, TaxAmount);
+            OrderTotalWithTax = string.Format(StringResources.OrderTotalWithTax, TaxAmount + OrderTotal);
         }
     }
 }

@@ -152,7 +152,7 @@ namespace JuniperTaxApp.Core.ViewModels
 
                 await Task.WhenAll(rateTask, taxAmountTask);
 
-                var taxesAndRatesModel = new CalculatedTaxAndRatesModel(taxAmountTask.Result, rateTask.Result);
+                var taxesAndRatesModel = new CalculatedTaxAndRatesModel(taxAmountTask.Result.Item1, taxAmountTask.Result.Item2, rateTask.Result);
                 ClearFields();
 
                 await _mvxNavigationService.Navigate<CalculatedTaxViewModel, CalculatedTaxAndRatesModel>(taxesAndRatesModel);

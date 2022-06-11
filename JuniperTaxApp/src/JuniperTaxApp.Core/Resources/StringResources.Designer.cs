@@ -173,9 +173,21 @@ namespace JuniperTaxApp.Core.Resources {
             }
         }
         
+        internal static string OrderTotal {
+            get {
+                return ResourceManager.GetString("OrderTotal", resourceCulture);
+            }
+        }
+        
         internal static string TaxesDue {
             get {
                 return ResourceManager.GetString("TaxesDue", resourceCulture);
+            }
+        }
+        
+        internal static string OrderTotalWithTax {
+            get {
+                return ResourceManager.GetString("OrderTotalWithTax", resourceCulture);
             }
         }
         

@@ -44,7 +44,8 @@ namespace JuniperTaxApp.Core.Test.ServiceTests
             var taxAmount = await taxService.GetTaxAmount(taxBody, CustomerType.BaseCustomer);
             _taxClient.Verify(c => c.CalculateTax(taxBody), Times.Once());
 
-            Assert.AreEqual(1.00, taxAmount);
+            Assert.AreEqual(1.00, taxAmount.Item1);
+            Assert.AreEqual(11.00, taxAmount.Item2);
         }
 
         private TaxRateDTO BuildTaxRateDTO()
@@ -93,7 +94,7 @@ namespace JuniperTaxApp.Core.Test.ServiceTests
                     AmountToCollect = 1.00,
                     FreightTaxable = false,
                     HasNexus = false,
-                    OrderTotalAmount = 10.00,
+                    OrderTotalAmount = 11.00,
                     Rate = 0,
                     Shipping = 1.00,
                     TaxSource = "",

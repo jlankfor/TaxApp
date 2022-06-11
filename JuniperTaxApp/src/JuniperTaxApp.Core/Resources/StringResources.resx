@@ -76,8 +76,14 @@
 	<data name="StateRate" xml:space="preserve">
 		<value>State Rate: {0}</value>
   </data>
+	<data name="OrderTotal" xml:space="preserve">
+		<value>Order Total: ${0}</value>
+  </data>
 	<data name="TaxesDue" xml:space="preserve">
 		<value>Taxes Due: ${0}</value>
+  </data>
+	<data name="OrderTotalWithTax" xml:space="preserve">
+		<value>Total Due: ${0}</value>
   </data>
 	<data name="TryNewOrderButton" xml:space="preserve">
 		<value>Try New Order</value>

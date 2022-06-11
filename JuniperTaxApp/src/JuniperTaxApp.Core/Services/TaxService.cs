@@ -34,19 +34,19 @@ namespace JuniperTaxApp.Core.Services
         }
 
 
-        public async Task<double> GetTaxAmount(TaxCalculationBodyDTO bodyDTO, CustomerType customerType)
+        public async Task<(double, double)> GetTaxAmount(TaxCalculationBodyDTO bodyDTO, CustomerType customerType)
         {
             switch (customerType)
             {
                 case CustomerType.BaseCustomer:
                     CalculatedTaxDTO taxCalculated = await _taxClient.CalculateTax(bodyDTO);
-                    return taxCalculated.Taxes.AmountToCollect;
+                    return (taxCalculated.Taxes.AmountToCollect, taxCalculated.Taxes.OrderTotalAmount);
                 case CustomerType.SecondCustomer:
                     CalculatedTaxDTO secondTaxCalculated = await _secondTaxClient.CalculateTax(bodyDTO);
-                    return secondTaxCalculated.Taxes.AmountToCollect;
+                    return (secondTaxCalculated.Taxes.AmountToCollect, secondTaxCalculated.Taxes.OrderTotalAmount);
                 default:
                     taxCalculated = await _taxClient.CalculateTax(bodyDTO);
-                    return taxCalculated.Taxes.AmountToCollect;
+                    return (taxCalculated.Taxes.AmountToCollect, taxCalculated.Taxes.OrderTotalAmount);
             }
         }
     }
